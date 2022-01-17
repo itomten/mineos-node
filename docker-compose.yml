@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mineos:
-    image: hexparrot/mineos:latest
+    image: itomten/mineos:latest
     container_name: mineos_server
     networks:
       - mineos
@@ -17,7 +17,7 @@ services:
       # stores names volumes by default in /var/lib/docker/volumes
       # with permissions that prevent normal users from accessing
       # the folder structure.
-      - /var/games/mineos/minecraft:/var/games/minecraft
+      - /var/games/minecraft:/var/games/minecraft
 
     environment:
       # Should the web interface use HTTPS or HTTP?

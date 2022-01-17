@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
   git \
   curl \
   rlwrap \
-  openjdk-16-jre-headless \
+  openjdk-17-jre-headless \
   openjdk-8-jre-headless \
   ca-certificates-java \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -42,8 +42,10 @@ RUN cd /usr/games/minecraft \
 RUN cp /usr/games/minecraft/init/supervisor_conf /etc/supervisor/conf.d/mineos.conf
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
 
-#entrypoint allowing for setting of mc password
-COPY entrypoint.sh /entrypoint.sh
+RUN cp /usr/games/minecraft/mineos.conf /etc/mineos.conf \
+  && cp /usr/games/minecraft/entrypoint.sh /entrypoint.sh
+
+#set start command and entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 8443 25565-25570
