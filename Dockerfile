@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu
 LABEL MAINTAINER='William Dizon <wdchromium@gmail.com>'
 
 #update and accept all prompts
